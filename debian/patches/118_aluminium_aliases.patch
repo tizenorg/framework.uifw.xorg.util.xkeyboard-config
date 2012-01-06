@@ -1,0 +1,55 @@
+commit a53c1a0a19bec8489ad0d2c33099556e48706ffe
+Author: Damien Ciabrini <damien.ciabrini@gmail.com>
+Date:   Thu Dec 24 16:29:38 2009 +0100
+
+    xkeyboard-config: Declaration of Apple Aluminium Keyboards
+    
+    New keyboard names and alias for ANSI, ISO, JIS keyboards
+    Description of the three models in the XKB Registry
+    
+    Signed-off-by: Damien Ciabrini <damien.ciabrini@gmail.com>
+
+diff --git a/rules/base.lists.part b/rules/base.lists.part
+index 7b69565..b526041 100644
+--- a/rules/base.lists.part
++++ b/rules/base.lists.part
+@@ -25,6 +25,7 @@
+ 
+ ! $macbooks = macbook78 macbook79
+ ! $maclaptop = ibook powerbook macbook78 macbook79
++! $applealu = applealu_ansi applealu_iso applealu_jis
+ ! $macs = macintosh macintosh_old ibook powerbook macbook78 macbook79
+ 
+ ! $macvendorlayouts = ch de dk fi fr gb is it latam nl no pt se us
+diff --git a/rules/base.xml.in b/rules/base.xml.in
+index 8dde521..aca6dc9 100644
+--- a/rules/base.xml.in
++++ b/rules/base.xml.in
+@@ -1100,6 +1100,27 @@
+     </model>
+     <model>
+       <configItem>
++        <name>applealu_ansi</name>
++        <_description>Apple Aluminium Keyboard (ANSI)</_description>
++	<vendor>Apple</vendor>
++      </configItem>
++    </model>
++    <model>
++      <configItem>
++        <name>applealu_iso</name>
++        <_description>Apple Aluminium Keyboard (ISO)</_description>
++	<vendor>Apple</vendor>
++      </configItem>
++    </model>
++    <model>
++      <configItem>
++        <name>applealu_jis</name>
++        <_description>Apple Aluminium Keyboard (JIS)</_description>
++	<vendor>Apple</vendor>
++      </configItem>
++    </model>
++    <model>
++      <configItem>
+         <name>silvercrest</name>
+         <_description>SILVERCREST Multimedia Wireless Keyboard</_description>
+ 	<vendor>Silvercrest</vendor>

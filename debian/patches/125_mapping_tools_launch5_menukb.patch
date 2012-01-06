@@ -1,0 +1,22 @@
+commit 1e94d48801bf8cb75741aa308d4cdfb63b03c66c
+Author: Sergey V. Udaltsov <svu@gnome.org>
+Date:   Mon Mar 29 00:12:27 2010 +0100
+
+    Added FK13-FK15 mapping for evdev
+    
+    http://bugs.freedesktop.org/show_bug.cgi?id=25835
+
+diff --git a/symbols/inet b/symbols/inet
+index 89e802e..1d46d54 100644
+--- a/symbols/inet
++++ b/symbols/inet
+@@ -215,6 +215,9 @@ xkb_symbols "evdev" {
+ //  key <I254>   {      [ ]       }; // KEY_WIMAX
+     key <I255>   {      [ XF86Hibernate         ]       }; // KEY_HIBERNATE
+  
++    key <FK13>   {      [ XF86Tools         ]       };
++    key <FK14>   {      [ XF86Launch5       ]       };
++    key <FK15>   {      [ XF86MenuKB        ]       };
+ };
+ 
+ 

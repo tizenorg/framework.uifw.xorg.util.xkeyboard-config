@@ -1,0 +1,46 @@
+commit 4e8471de70015bdc4d26a9031682938e6f2cc4d6
+Author: Fedora X Ninjas <x@fedoraproject.org>
+Date:   Wed Feb 10 14:39:07 2010 +0530
+
+    Add support for OLPC AZERTY kbd
+
+diff --git a/rules/base.lists.part b/rules/base.lists.part
+index f3b4a15..7b69565 100644
+--- a/rules/base.lists.part
++++ b/rules/base.lists.part
+@@ -21,7 +21,7 @@
+ ! $tmgeometries = tm2020 tm2030PS2 tm2030USB tm2030USB-102 tm2030USB-106
+ 
+ // Layouts that provide further specializations for the OLPC
+-! $olpclayouts = af am ara br ca es et it kh kz in mn np ru th tr us 
++! $olpclayouts = af am ara br ca es et fr it kh kz in mn np ru th tr us 
+ 
+ ! $macbooks = macbook78 macbook79
+ ! $maclaptop = ibook powerbook macbook78 macbook79
+diff --git a/symbols/fr b/symbols/fr
+index e0850d2..be8a4a7 100644
+--- a/symbols/fr
++++ b/symbols/fr
+@@ -46,6 +46,22 @@ xkb_symbols "basic" {
+ };
+ 
+ partial alphanumeric_keys
++xkb_symbols "olpc" {
++    // Contact: Sayamindu Dasgupta <sayamindu@laptop.org>
++    include "fr(basic)"
++
++    name[Group1]="France - OLPC";
++
++    key <AD02>	{ [ z,  Z,  VoidSymbol, guillemotleft ]	};
++
++    key <AC02>	{ [ s,  S,  VoidSymbol, ssharp ] };
++
++    key <AB02>	{ [  x,  X,  VoidSymbol,     guillemotright ] };
++
++    key <I219>  { [ less, greater ] };
++};
++
++partial alphanumeric_keys
+ xkb_symbols "Sundeadkeys" {
+ 
+     // Modifies the basic French layout to use the Sun dead keys
