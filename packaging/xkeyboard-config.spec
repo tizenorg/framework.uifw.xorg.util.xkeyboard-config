@@ -8,6 +8,7 @@ License:    MIT
 BuildArch:  noarch
 URL:        http://www.x.org
 Source0:    http://xlibs.freedesktop.org/xkbdesc/%{name}-%{version}.tar.gz
+Source1001: packaging/xkeyboard-config.manifest 
 BuildRequires:  pkgconfig(xorg-macros)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  intltool
@@ -37,6 +38,7 @@ Group:      System/X11
 %setup -q
 
 %build
+cp %{SOURCE1001} .
 
 intltoolize -c -f
 autoreconf -vfi
@@ -71,6 +73,7 @@ popd
 }
 
 %files -f files.list
+%manifest xkeyboard-config.manifest
 /etc/X11/xkb/base.xml
 /opt/etc/X11/xkb/rules/base.xml
 /opt/etc/X11/xkb/rules/xfree86
@@ -82,10 +85,12 @@ popd
 /usr/share/locale/*/LC_MESSAGES/xkeyboard-config.mo
 
 %files -n xkb-data
+%manifest xkeyboard-config.manifest
 #%defattr(-,root,root,-)
 /opt/etc/X11/*
 
 %files -n xkb-data-i18n
+%manifest xkeyboard-config.manifest
 #%defattr(-,root,root,-)
 /usr/share/locale/*
 
