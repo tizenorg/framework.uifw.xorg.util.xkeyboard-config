@@ -45,7 +45,7 @@ autoreconf -vfi
 
 %configure --disable-static \
     --disable-xkbcomp-symlink --with-xkb-rules-symlink=xfree86,xorg   \
-    --with-xkb-base=/opt/etc/X11/xkb --datarootdir=/opt/etc
+    --with-xkb-base=/etc/X11/xkb --datarootdir=/etc
 
 make %{?jobs:-j%jobs}
 
@@ -55,39 +55,34 @@ rm -rf %{buildroot}
 %make_install
 
 # Remove unnecessary symlink
-rm -f $RPM_BUILD_ROOT/opt/etc/X11/xkb/compiled
+rm -f $RPM_BUILD_ROOT/etc/X11/xkb/compiled
 
 mkdir -p  %{buildroot}/etc/X11/xkb/
-mv %{buildroot}/opt/etc/X11/xkb/rules/base.xml %{buildroot}/etc/X11/xkb/
-pushd %{buildroot}
-ln -s etc/X11/xkb/base.xml opt/etc/X11/xkb/rules/base.xml
-popd
 
 # Create filelist
 {
 FILESLIST=${PWD}/files.list
 pushd $RPM_BUILD_ROOT
-find ./opt/etc/X11 -type d | sed -e "s/^\./%dir /g" > $FILESLIST
-find ./opt/etc/X11 -type f | sed -e "s/^\.//g" >> $FILESLIST
+find ./etc/X11 -type d | sed -e "s/^\./%dir /g" > $FILESLIST
+find ./etc/X11 -type f | sed -e "s/^\.//g" >> $FILESLIST
 popd
 }
 
 %files -f files.list
 %manifest xkeyboard-config.manifest
-/etc/X11/xkb/base.xml
-/opt/etc/X11/xkb/rules/base.xml
-/opt/etc/X11/xkb/rules/xfree86
-/opt/etc/X11/xkb/rules/xfree86.lst
-/opt/etc/X11/xkb/rules/xfree86.xml
-/opt/etc/X11/xkb/rules/xorg
-/opt/etc/X11/xkb/rules/xorg.lst
-/opt/etc/X11/xkb/rules/xorg.xml
+/etc/X11/xkb/rules/base.xml
+/etc/X11/xkb/rules/xfree86
+/etc/X11/xkb/rules/xfree86.lst
+/etc/X11/xkb/rules/xfree86.xml
+/etc/X11/xkb/rules/xorg
+/etc/X11/xkb/rules/xorg.lst
+/etc/X11/xkb/rules/xorg.xml
 /usr/share/locale/*/LC_MESSAGES/xkeyboard-config.mo
 
 %files -n xkb-data
 %manifest xkeyboard-config.manifest
 #%defattr(-,root,root,-)
-/opt/etc/X11/*
+/etc/X11/*
 
 %files -n xkb-data-i18n
 %manifest xkeyboard-config.manifest

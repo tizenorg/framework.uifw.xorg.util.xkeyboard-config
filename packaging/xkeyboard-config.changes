@@ -1,0 +1,14 @@
+* Mon Jul 02 2012 William Douglas <william.douglas@intel.com> c4cf97d
+- use /etc/ not /opt/etc
+
+* Tue May 29 2012 Ryan Ware <ryan.r.ware@intel.com> 630f7b8
+- Add default Smack manifest for xkeyboard-config.spec
+
+* Sun Apr 29 2012 Kim Kibum <kb0929.kim@samsung.com> 7d3dbc8
+- upload tizen1.0 source
+
+* Fri Jan 06 2012 Kibum Kim <kb0929.kim@samsung.com> 821b5af
+- Git init
+[ Eunkyoung Kim ]
+- Initial empty repository
+
