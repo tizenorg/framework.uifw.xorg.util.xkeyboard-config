@@ -1,3 +1,19 @@
+xkeyboard-config (1.8-3slp2) unstable; urgency=low
+
+  * Fix xkb-base and dataroot dir in packaging/xkeyboard-config.spec file
+  * Git: 165.213.180.234:slp/pkgs/xorg/util/xkeyboard-config
+  * Tag: xkeyboard-config_1.8-3slp2
+
+ -- Sung-Jin Park <sj76.park@samsung.com>  Mon, 18 Jun 2012 10:48:04 +0900
+
+xkeyboard-config (1.8-2slp2) unstable; urgency=low
+
+  * Change DATAFS from opt to usr in debian/rules file
+  * Git: 165.213.180.234:slp/pkgs/xorg/util/xkeyboard-config
+  * Tag: xkeyboard-config_1.8-2slp2
+
+ -- Sung-Jin Park <sj76.park@samsung.com>  Wed, 07 Mar 2012 16:36:33 +0900
+
 xkeyboard-config (1.8-1slp2) unstable; urgency=low
 
   * [X11R7.6] work for the xkeyboard-config
@@ -23,7 +39,7 @@ xkeyboard-config (1.8-1ubuntu7) lucid; urgency=low
       gtk_action_group_add_toggle_actions to setup Ctrl + space accelerator.
       We lose rctrl accelator but that's better than not having space in
       those applications. Setup it manually will reintroduce
-      https://bugs.launchpad.net/bugs/198759 
+      https://bugs.launchpad.net/bugs/198759
       (LP: #221112)
  -- Didier Roche <didrocks@ubuntu.com>  Wed, 14 Apr 2010 18:15:30 +0200
 
@@ -76,7 +92,7 @@ xkeyboard-config (1.8-1ubuntu3) lucid; urgency=low
     + 124_serbian_ru_level3.patch
     + 125_mapping_tools_launch5_menukb.patch
     + 126_swahili_arabic.patch
-  
+
  -- Bryce Harrington <bryce@ubuntu.com>  Mon, 29 Mar 2010 20:31:26 -0700
 
 xkeyboard-config (1.8-1ubuntu2) lucid; urgency=low
@@ -812,7 +828,7 @@ xkeyboard-config (0.8-13) unstable; urgency=low
     + debian/patches/mac_swap_kp.diff
     + debian/patches/mac_nodeadkeys.diff
 
-  * debian/README.Debian: Replace its obsolete content by informations 
+  * debian/README.Debian: Replace its obsolete content by informations
     to powerpc users.
 
   * debian/patches/fix_xkbcomp_crash.diff: New patch to fix an

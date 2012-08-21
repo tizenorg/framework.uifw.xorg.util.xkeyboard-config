@@ -16,7 +16,7 @@ else
 #	confflags += --build $(DEB_BUILD_GNU_TYPE) --host $(DEB_HOST_GNU_TYPE)
 endif
 
-DATAFS = opt
+DATAFS = usr
 xkb_base := /$(DATAFS)/etc/X11/xkb
 #xkb_base := /usr/share/X11/xkb
 
@@ -30,7 +30,7 @@ config.status: configure
 	./configure $(confflags) \
 	  --prefix=/$(DATAFS) \
 	  --disable-xkbcomp-symlink --with-xkb-rules-symlink=xfree86,xorg \
-	  --with-xkb-base=$(xkb_base) --datarootdir=/opt/etc
+	  --with-xkb-base=$(xkb_base) --datarootdir=/$(DATAFS)/etc
 	>$@
 
 #build: $(STAMP_DIR)/build
@@ -56,7 +56,7 @@ clean: xsfclean
 	-rm -f intltool-extract intltool-merge intltool-update
 	-rm -f rules/base.xml
 	-rm -f po/.intltool-merge-cache config.status.lineno
-	dh_clean 
+	dh_clean
 	rm -f compat/compat.dir geometry/geometry.dir keycodes/keycodes.dir
 	rm -f keymap/keymap.dir symbols/symbols.dir types/types.dir rules/base
 	rm -f rules/compat/base.l[2-4]*.part rules/compat/base.m*.part
@@ -77,7 +77,7 @@ dir:
 install: build
 	dh_testdir
 	dh_testroot
-	dh_clean -k 
+	dh_clean -k
 	dh_installdirs
 
 	$(MAKE) install DESTDIR=$(CURDIR)/debian/xkb-data
@@ -107,4 +107,4 @@ binary-indep: build install
 	dh_builddeb
 
 binary: binary-indep binary-arch
-.PHONY: build clean binary-indep binary-arch binary install 
+.PHONY: build clean binary-indep binary-arch binary install

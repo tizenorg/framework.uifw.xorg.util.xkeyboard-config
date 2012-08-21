@@ -514,8 +514,7 @@ msgid "CapsLock (to first layout), Shift+CapsLock (to last layout)"
 msgstr ""
 
 #: ../rules/base.xml.in.h:125
-msgid ""
-"CapsLock (while pressed), Alt+CapsLock does the original capslock action"
+msgid "CapsLock (while pressed), Alt+CapsLock does the original capslock action"
 msgstr ""
 
 #: ../rules/base.xml.in.h:126
@@ -524,9 +523,7 @@ msgstr ""
 
 #: ../rules/base.xml.in.h:127
 msgid "CapsLock acts as Shift with locking. Shift doesn't affect CapsLock"
-msgstr ""
-"CapsLock Shift блокировка менен клавишасы катары амал жасайт. Shift CapsLock "
-"амалына тоскол болбойт"
+msgstr "CapsLock Shift блокировка менен клавишасы катары амал жасайт. Shift CapsLock амалына тоскол болбойт"
 
 #: ../rules/base.xml.in.h:128
 msgid "CapsLock is disabled"
@@ -550,8 +547,7 @@ msgstr "CapsLock ички капитализацыяны ачат. Shift CapsLoc
 
 #: ../rules/base.xml.in.h:133
 msgid "CapsLock uses internal capitalization. Shift doesn't affect CapsLock"
-msgstr ""
-"CapsLock ички капитализацыяны ачат. Shift CapsLock амалына таасир тийгизбейт"
+msgstr "CapsLock ички капитализацыяны ачат. Shift CapsLock амалына таасир тийгизбейт"
 
 #: ../rules/base.xml.in.h:134
 msgid "Catalan variant with middle-dot L"
@@ -1957,15 +1953,11 @@ msgid "Non-breakable space character at fourth level"
 msgstr ""
 
 #: ../rules/base.xml.in.h:487
-msgid ""
-"Non-breakable space character at fourth level, thin non-breakable space "
-"character at sixth level"
+msgid "Non-breakable space character at fourth level, thin non-breakable space character at sixth level"
 msgstr ""
 
 #: ../rules/base.xml.in.h:488
-msgid ""
-"Non-breakable space character at fourth level, thin non-breakable space "
-"character at sixth level (via Ctrl+Shift)"
+msgid "Non-breakable space character at fourth level, thin non-breakable space character at sixth level (via Ctrl+Shift)"
 msgstr ""
 
 #: ../rules/base.xml.in.h:489
@@ -1981,9 +1973,7 @@ msgid "Non-breakable space character at third level, nothing at fourth level"
 msgstr ""
 
 #: ../rules/base.xml.in.h:492
-msgid ""
-"Non-breakable space character at third level, thin non-breakable space "
-"character at fourth level"
+msgid "Non-breakable space character at third level, thin non-breakable space character at fourth level"
 msgstr ""
 
 #: ../rules/base.xml.in.h:493
@@ -2200,8 +2190,7 @@ msgstr "Румындык клавиатура немец ариптери мен
 
 #: ../rules/base.xml.in.h:546
 msgid "Romanian keyboard with German letters, eliminate dead keys"
-msgstr ""
-"Румындык клавиатура немец ариптери менен, атайын (dead keys) клавишаларсыз"
+msgstr "Румындык клавиатура немец ариптери менен, атайын (dead keys) клавишаларсыз"
 
 #: ../rules/base.xml.in.h:547
 msgid "Rou"
@@ -2305,9 +2294,7 @@ msgstr ""
 
 #: ../rules/base.xml.in.h:572
 msgid "Shift with numeric keypad keys works as in MS Windows"
-msgstr ""
-"Shift сандык клавиатура клавишалары менен MS Windows'тогу клавишадай амал "
-"жасайт"
+msgstr "Shift сандык клавиатура клавишалары менен MS Windows'тогу клавишадай амал жасайт"
 
 #: ../rules/base.xml.in.h:573
 msgid "Shift+CapsLock"
@@ -2616,9 +2603,7 @@ msgid "Unicode additions (arrows and math operators)"
 msgstr ""
 
 #: ../rules/base.xml.in.h:651
-msgid ""
-"Unicode additions (arrows and math operators). Math operators on default "
-"level"
+msgid "Unicode additions (arrows and math operators). Math operators on default level"
 msgstr ""
 
 #: ../rules/base.xml.in.h:652
@@ -2694,9 +2679,7 @@ msgid "Wang 724 keypad with unicode additions (arrows and math operators)"
 msgstr ""
 
 #: ../rules/base.xml.in.h:670
-msgid ""
-"Wang 724 keypad with unicode additions (arrows and math operators). Math "
-"operators on default level"
+msgid "Wang 724 keypad with unicode additions (arrows and math operators). Math operators on default level"
 msgstr ""
 
 #: ../rules/base.xml.in.h:671
@@ -2807,15 +2790,6 @@ msgstr ""
 msgid "International (AltGr Unicode combining, alternative)"
 msgstr ""
 
-#: ../rules/base.xml.in.h:343
-msgid "Keypad"
-msgstr ""
-
-#: ../rules/base.xml.in.h:625
-#, fuzzy
-msgid "Traditional Phonetic"
-msgstr "Альтернативдүү фонетикалык"
-
 #~ msgid "Pro"
 #~ msgstr "Pro"
 
@@ -2868,10 +2842,8 @@ msgstr "Альтернативдүү фонетикалык"
 #~ msgid "SCG"
 #~ msgstr "СМН"
 
-#~ msgid ""
-#~ "Swap keycodes of two keys when Mac keyboards are misdetected by kernel."
-#~ msgstr ""
-#~ "Swap keycodes of two keys when Mac keyboards are misdetected by kernel."
+#~ msgid "Swap keycodes of two keys when Mac keyboards are misdetected by kernel."
+#~ msgstr "Swap keycodes of two keys when Mac keyboards are misdetected by kernel."
 
 #~ msgid "US keyboard with Slovenian digraphs"
 #~ msgstr "АКШ клавиатурасы словендик диграфтар менен"
@@ -3043,6 +3015,3 @@ msgstr "Альтернативдүү фонетикалык"
 
 #~ msgid "type4"
 #~ msgstr "type4"
-
-#~ msgid "Caps Lock is Compose."
-#~ msgstr "Caps Lock Compose клавишасы."

@@ -1,5 +1,3 @@
-// $XKeyboardConfig$
-
 // based on:
 // symbols for a Japanese 106 keyboard(by tsuka@kawalab.dnj.ynu.ac.jp)
 
@@ -7,7 +5,7 @@
 partial default alphanumeric_keys
 xkb_symbols "106" {
     include "jp(common)"
-    name[Group1]= "Japan";
+    name[Group1]= "Japanese";
 
     key <AE10> { [ 0, asciitilde	] };
     key <AE13> { [ backslash, bar 	] };
@@ -110,16 +108,44 @@ partial alphanumeric_keys
 xkb_symbols "OADG109A" {
 
     include "jp(common)"
-    name[Group1]= "Japan - OADG 109A";
+    name[Group1]= "Japanese (OADG 109A)";
 
     key <AE10> { [ 0		] };
     key <AE13> { [ yen, bar 	] };
 };
 
+// 86 keys with kana map
+partial alphanumeric_keys
+xkb_symbols "kana86" {
+
+    include "srvr_ctrl(fkey2vt)"
+    include "pc(editing)"
+    include "keypad(numoperdecsep)"
+    include "altwin(menu)"
+    include "jp(kana)"
+    include "jp(OADG109A)"
+    name[Group1]= "Japanese (Kana 86)";
+
+    key <ESC> {		[ Escape	]	};
+    key <NMLK> {	[ Num_Lock, Pointer_EnableKeys		]	};
+    key <BKSP> {	[ BackSpace	]	};
+    key  <TAB> {	[ Tab, ISO_Left_Tab ]	};
+    key <RTRN> {	[ Return	]	};
+    key <LFSH> {	[ Shift_L	]	};
+    key <RTSH> {	[ Shift_R	]	};
+    key <LWIN> {	[ Super_L	]	};
+    key <LALT> {	[ Alt_L		]	};
+    key <SPCE> {	[ space		]	};
+    key <RALT> {	[ Alt_R		]	};
+// for compatability with other keyboards connected at the same time
+    key <RWIN> {	[ Super_R		]	};
+    key <RCTL> {	[ Control_R		]	};
+};
+
 partial alphanumeric_keys
 xkb_symbols "kana" {
 
-    name[Group1]= "Japan - Kana";
+    name[Group1]= "Japanese (Kana)";
 
     // Alphanumeric section
     key <HZTG> {
@@ -210,4 +236,59 @@ xkb_symbols "nicola_f_bs" {
     key <AC11> { [ BackSpace, BackSpace ] };
     key <AC12> { [ Escape               ] };
     key <AB11> { [ at, grave            ] };
+};
+
+// Copied from macintosh_vndr/jp
+partial alphanumeric_keys
+xkb_symbols "mac" {
+    name[Group1]	= "Japanese (Macintosh)";
+    include "jp(kana)"
+
+    replace key <CAPS> { [ Caps_Lock ] };
+};
+
+partial alphanumeric_keys
+xkb_symbols "hztg_escape" {
+    replace key <HZTG> { [ Escape ] };
+};
+
+partial alphanumeric_keys
+xkb_symbols "dvorak" {
+    name[Group1]	= "Japanese (Dvorak)";
+    include "jp(OADG109A)"
+
+    key <AE11> { [ at, grave		] };
+
+    key <AD01> { [ colon, asterisk	] };
+    key <AD02> { [ comma,  less		] };
+    key <AD03> { [ period, greater	] };
+    key <AD04> { [ p, P			] };
+    key <AD05> { [ y, Y			] };
+    key <AD06> { [ f, F			] };
+    key <AD07> { [ g, G			] };
+    key <AD08> { [ c, C			] };
+    key <AD09> { [ r, R			] };
+    key <AD10> { [ l, L			] };
+    key <AD11> { [ slash, question	] };
+
+    key <AC02> { [ o, O			] };
+    key <AC03> { [ e, E			] };
+    key <AC04> { [ u, U			] };
+    key <AC05> { [ i, I			] };
+    key <AC06> { [ d, D			] };
+    key <AC07> { [ h, H			] };
+    key <AC08> { [ t, T			] };
+    key <AC09> { [ n, N			] };
+    key <AC10> { [ s, S			] };
+    key <AC11> { [ minus, equal		] };
+
+    key <AB01> { [ semicolon, plus	] };
+    key <AB02> { [ q, Q			] };
+    key <AB03> { [ j, J			] };
+    key <AB04> { [ k, K			] };
+    key <AB05> { [ x, X			] };
+    key <AB06> { [ b, B			] };
+    key <AB08> { [ w, W			] };
+    key <AB09> { [ v, V			] };
+    key <AB10> { [ z, Z			] };
 };

@@ -1,5 +1,3 @@
-// $XConsortium: dk /main/3 1996/08/31 12:19:29 kaleb $
-// $XFree86: xc/programs/xkbcomp/symbols/dk,v 3.3.2.1 1999/12/20 12:56:01 hohndel Exp $
 partial alphanumeric_keys 
 xkb_symbols "basic" {
 
@@ -48,14 +46,6 @@ xkb_symbols "basic" {
     include "level3(ralt_switch)"
 };
 
-
-partial default alphanumeric_keys 
-xkb_symbols "full" {
-    include "iso9995-3(full)"
-    include "dk(basic)"
-};
-
-
 partial alphanumeric_keys 
 xkb_symbols "nodeadkeys" {
     include "macintosh_vndr/dk(basic)"
@@ -76,4 +66,3 @@ xkb_symbols "macbookpro" {
     key <BKSL>  { [apostrophe, asterisk,        at,        at ] };
     key <TLDE>  { [    dollar,  section,    dollar,    dollar ] };
 };
-
