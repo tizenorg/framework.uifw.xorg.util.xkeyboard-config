@@ -1,0 +1,8 @@
+<manifest>
+        <define>
+                <domain name="xorg" policy="shared"/>
+        </define>
+	<request>
+		<domain name="xorg"/>
+	</request>
+</manifest>
