@@ -1,7 +1,6 @@
 # INFO: Package contains data-only, no binaries, so no debuginfo is needed
 %define debug_package %{nil}
 
-
 Summary: X Keyboard Extension configuration data
 Name: xkeyboard-config
 Version: 2.6
@@ -11,14 +10,6 @@ Group: User Interface/X
 URL: http://www.freedesktop.org/wiki/Software/XKeyboardConfig
 
 Source: %{name}-%{version}.tar.gz
-
-#%if 0%{?gitdate}
-#Source0:    %{name}-%{gitdate}.tar.bz2
-#Source1:    make-git-snapshot.sh
-#Source2:    commitid
-#%else
-#Source0: http://xorg.freedesktop.org/archive/individual/data/xkeyboard-config/%{name}-%{version}.tar.bz2
-#%endif
 
 # Bug 826220 - Tilda is now a dead key (for accented chars)
 #Patch01: 0001-Reverting-broken-fix-for-is-keyboard.patch
@@ -31,13 +22,13 @@ BuildRequires: xkbcomp
 BuildRequires: perl(XML::Parser)
 BuildRequires: intltool
 BuildRequires: gettext
-#BuildRequires: git-core
 BuildRequires: automake autoconf libtool pkgconfig
 BuildRequires: glib2-devel
 BuildRequires: pkgconfig(xproto)
 BuildRequires: libX11-devel
 BuildRequires: libxslt
 Provides:    xkbdata
+Requires:    dlogutil
 
 %package -n xkb-data
 Summary:    X Keyboard Extension (XKB) configuration data
@@ -70,33 +61,9 @@ Requires: pkgconfig
 
 %prep
 %setup -q
-#%setup -q -n %{name}-%{?gitdate:%{gitdate}}%{!?gitdate:%{version}}
-
-#%if 0%{?gitdate}
-#git checkout -b fedora
-#sed -i 's/git/&+ssh/' .git/config
-#if [ -z "$GIT_COMMITTER_NAME" ]; then
-#    git config user.email "x@fedoraproject.org"
-#    git config user.name "Fedora X Ninjas"
-#fi
-#git commit -am "%{name} %{version}"
-#%else
-#git init
-#if [ -z "$GIT_COMMITTER_NAME" ]; then
-#    git config user.email "x@fedoraproject.org"
-#    git config user.name "Fedora X Ninjas"
-#fi
-#git add .
-#git commit -a -q -m "%{name} %{version} baseline."
-#%endif
-
-#git am -p1 %{patches} < /dev/null
 
 %build
-#autoreconf -i -v -f
-#AUTOPOINT="intltoolize --automake --copy" autoreconf -v --force --install || exit 1
-#intltoolize -c -f   
-#autoreconf -vfi
+%autogen
 %configure \
     --enable-compat-rules \
     --with-xkb-base=/etc/X11/xkb --datarootdir=/etc \
