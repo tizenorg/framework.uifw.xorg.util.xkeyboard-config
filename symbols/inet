@@ -318,7 +318,7 @@ xkb_symbols "tizen_mobile" {
     key <I209>   {      [ XF86AudioPause        ]       };
     key <I210>   {      [ XF86Launch3           ]       };
     key <I211>   {      [ XF86Launch4           ]       };
-    key <I212>   {      [ XF86LaunchB           ]       };
+    key <I212>   {      [ XF86Launch0           ]       };
     key <I213>   {      [ XF86Suspend           ]       };
     key <I214>   {      [ XF86Close             ]       };
     key <I215>   {      [ XF86AudioPlay         ]       };
@@ -362,7 +362,7 @@ xkb_symbols "tizen_mobile" {
     key <I255>   {      [ XF86Hibernate         ]       }; // KEY_HIBERNATE
  
     key <FK13>   {      [ XF86Tools         ]       };
-    key <FK14>   {      [ XF86Launch5       ]       };
+    key <FK14>   {      [ XF86TaskPane      ]       };
     key <FK15>   {      [ XF86Launch6       ]       };
     key <FK16>   {      [ XF86Launch7       ]       };
     key <FK17>   {      [ XF86Launch8       ]       };
