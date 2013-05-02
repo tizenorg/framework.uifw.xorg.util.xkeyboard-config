@@ -3,7 +3,7 @@
 
 Summary: X Keyboard Extension configuration data
 Name: xkeyboard-config
-Version: 2.6
+Version: 2.7
 Release: 4
 License: MIT
 Group: User Interface/X
@@ -93,7 +93,7 @@ rm -f $RPM_BUILD_ROOT%{_datadir}/X11/xkb/compiled
 mkdir -p  %{buildroot}/etc/X11/xkb/
 mv %{buildroot}/etc/X11/xkb/rules/base.xml %{buildroot}/etc/X11/xkb/
 pushd %{buildroot}
-ln -s etc/X11/xkb/base.xml etc/X11/xkb/rules/base.xml
+ln -s /etc/X11/xkb/base.xml etc/X11/xkb/rules/base.xml
 popd
 
 # Create filelist
