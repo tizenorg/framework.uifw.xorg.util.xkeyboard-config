@@ -290,7 +290,7 @@ xkb_symbols "tizen_mobile" {
     key <I169>   {      [ XF86Eject             ]       };
     key <I170>   {      [ XF86Eject, XF86Eject  ]       };
     key <I171>   {      [ XF86AudioNext         ]       };
-    key <I172>   {      [ XF86AudioPlay, XF86AudioPause ] };
+    key <I172>   {      [ XF86AudioPlayPause ] };
     key <I173>   {      [ XF86AudioPrev         ]       };
     key <I174>   {      [ XF86AudioStop, XF86Eject ]    };
     key <I175>   {      [ XF86AudioRecord       ]       };
