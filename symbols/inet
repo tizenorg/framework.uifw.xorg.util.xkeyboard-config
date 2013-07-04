@@ -230,9 +230,6 @@ xkb_symbols "evdev" {
 // Tizen Mobile Keycodes
 partial alphanumeric_keys
 xkb_symbols "tizen_mobile" {
-    key <ESC>    {      [ XF86Stop              ]       };
-    key <COMP>   {      [ XF86Send              ]       };
-    key <MENU>   {      [ XF86Send              ]       };
     key <MUTE>   {      [ XF86AudioMute         ]       };
     key <VOL->   {      [ XF86AudioLowerVolume  ]       };
     key <VOL+>   {      [ XF86AudioRaiseVolume  ]       };

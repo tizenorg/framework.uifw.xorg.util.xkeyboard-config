@@ -3,7 +3,7 @@
 
 Summary: X Keyboard Extension configuration data
 Name: xkeyboard-config
-Version: 2.8
+Version: 2.9
 Release: 4
 License: MIT
 Group: User Interface/X
