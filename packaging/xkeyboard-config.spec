@@ -3,7 +3,7 @@
 
 Summary: X Keyboard Extension configuration data
 Name: xkeyboard-config
-Version: 2.9
+Version: 2.9.1
 Release: 5
 License: MIT
 Group: User Interface/X
@@ -29,6 +29,7 @@ BuildRequires: libX11-devel
 BuildRequires: libxslt
 Provides:    xkbdata
 Requires:    dlogutil
+Requires:    xorg-x11-xkb-utils
 
 %package -n xkb-data
 Summary:    X Keyboard Extension (XKB) configuration data
@@ -46,9 +47,9 @@ Group:      System/X11
 %{summary}
 
 %description
-This package contains configuration data used by the X Keyboard Extension 
-(XKB), which allows selection of keyboard layouts when using a graphical 
-interface. 
+This package contains configuration data used by the X Keyboard Extension
+(XKB), which allows selection of keyboard layouts when using a graphical
+interface.
 
 %package devel
 Summary: Development files for %{name}
@@ -78,7 +79,6 @@ mkdir -p %{buildroot}/usr/share/license
 cp -af COPYING %{buildroot}/usr/share/license/%{name}
 cp -af COPYING %{buildroot}/usr/share/license/xkb-data
 cp -af COPYING %{buildroot}/usr/share/license/xkb-data-i18n
-cp -af COPYING %{buildroot}/usr/share/license/%{name}-devel
 make install DESTDIR=$RPM_BUILD_ROOT INSTALL="install -p"
 cp -af %{buildroot}/etc/X11/xkb/rules/evdev %{buildroot}/etc/X11/xkb/rules/tizen_mobile
 mv -f %{buildroot}/etc/X11/xkb/rules/evdev %{buildroot}/etc/X11/xkb/rules/evdev.org
@@ -89,7 +89,7 @@ ln -sf tizen_mobile %{buildroot}/etc/X11/xkb/rules/evdev
 
 # Remove unnecessary symlink
 rm -f $RPM_BUILD_ROOT%{_datadir}/X11/xkb/compiled
-%find_lang %{name} 
+%find_lang %{name}
 
 mkdir -p  %{buildroot}/etc/X11/xkb/
 mv %{buildroot}/etc/X11/xkb/rules/base.xml %{buildroot}/etc/X11/xkb/
@@ -127,7 +127,6 @@ find %{buildroot}/usr/share/locale -name "*.mo" -exec rm -f {} \;
 %files devel
 %defattr(-,root,root,-)
 %{_datadir}/pkgconfig/xkeyboard-config.pc
-/usr/share/license/%{name}-devel
 
 %files -n xkb-data
 %manifest xkb-data.manifest
