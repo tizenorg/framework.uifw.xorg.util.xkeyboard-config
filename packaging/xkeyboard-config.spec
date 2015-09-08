@@ -1,24 +1,15 @@
 # INFO: Package contains data-only, no binaries, so no debuginfo is needed
 %define debug_package %{nil}
 
-
 Summary: X Keyboard Extension configuration data
 Name: xkeyboard-config
-Version: 2.6
-Release: 3.2
+Version: 2.9.1
+Release: 5
 License: MIT
 Group: User Interface/X
 URL: http://www.freedesktop.org/wiki/Software/XKeyboardConfig
 
 Source: %{name}-%{version}.tar.gz
-
-#%if 0%{?gitdate}
-#Source0:    %{name}-%{gitdate}.tar.bz2
-#Source1:    make-git-snapshot.sh
-#Source2:    commitid
-#%else
-#Source0: http://xorg.freedesktop.org/archive/individual/data/xkeyboard-config/%{name}-%{version}.tar.bz2
-#%endif
 
 # Bug 826220 - Tilda is now a dead key (for accented chars)
 #Patch01: 0001-Reverting-broken-fix-for-is-keyboard.patch
@@ -31,17 +22,19 @@ BuildRequires: xkbcomp
 BuildRequires: perl(XML::Parser)
 BuildRequires: intltool
 BuildRequires: gettext
-#BuildRequires: git-core
 BuildRequires: automake autoconf libtool pkgconfig
 BuildRequires: glib2-devel
 BuildRequires: pkgconfig(xproto)
 BuildRequires: libX11-devel
 BuildRequires: libxslt
 Provides:    xkbdata
+Requires:    dlogutil
+Requires:    xorg-x11-xkb-utils
 
 %package -n xkb-data
 Summary:    X Keyboard Extension (XKB) configuration data
 Group:      System/X11
+Requires:	xorg-x11-server-common
 
 %description -n xkb-data
 %{summary}
@@ -54,9 +47,9 @@ Group:      System/X11
 %{summary}
 
 %description
-This package contains configuration data used by the X Keyboard Extension 
-(XKB), which allows selection of keyboard layouts when using a graphical 
-interface. 
+This package contains configuration data used by the X Keyboard Extension
+(XKB), which allows selection of keyboard layouts when using a graphical
+interface.
 
 %package devel
 Summary: Development files for %{name}
@@ -69,54 +62,39 @@ Requires: pkgconfig
 
 %prep
 %setup -q
-#%setup -q -n %{name}-%{?gitdate:%{gitdate}}%{!?gitdate:%{version}}
-
-#%if 0%{?gitdate}
-#git checkout -b fedora
-#sed -i 's/git/&+ssh/' .git/config
-#if [ -z "$GIT_COMMITTER_NAME" ]; then
-#    git config user.email "x@fedoraproject.org"
-#    git config user.name "Fedora X Ninjas"
-#fi
-#git commit -am "%{name} %{version}"
-#%else
-#git init
-#if [ -z "$GIT_COMMITTER_NAME" ]; then
-#    git config user.email "x@fedoraproject.org"
-#    git config user.name "Fedora X Ninjas"
-#fi
-#git add .
-#git commit -a -q -m "%{name} %{version} baseline."
-#%endif
-
-#git am -p1 %{patches} < /dev/null
 
 %build
-#autoreconf -i -v -f
-#AUTOPOINT="intltoolize --automake --copy" autoreconf -v --force --install || exit 1
-#intltoolize -c -f   
-#autoreconf -vfi
+%autogen
 %configure \
     --enable-compat-rules \
-    --with-xkb-base=/usr/etc/X11/xkb --datarootdir=/usr/etc \
+    --with-xkb-base=/etc/X11/xkb --datarootdir=/etc \
     --disable-xkbcomp-symlink \
     --with-xkb-rules-symlink=xfree86,xorg
 
 make %{?jobs:-j%jobs} %{?_smp_mflags}
 
 %install
+rm -rf $RPM_BUILD_ROOT
+mkdir -p %{buildroot}/usr/share/license
+cp -af COPYING %{buildroot}/usr/share/license/%{name}
+cp -af COPYING %{buildroot}/usr/share/license/xkb-data
+cp -af COPYING %{buildroot}/usr/share/license/xkb-data-i18n
 make install DESTDIR=$RPM_BUILD_ROOT INSTALL="install -p"
+cp -af %{buildroot}/etc/X11/xkb/rules/evdev %{buildroot}/etc/X11/xkb/rules/tizen_mobile
+mv -f %{buildroot}/etc/X11/xkb/rules/evdev %{buildroot}/etc/X11/xkb/rules/evdev.org
+sed -i 's/evdev/tizen_mobile/g' %{buildroot}/etc/X11/xkb/rules/tizen_mobile
+ln -sf tizen_mobile %{buildroot}/etc/X11/xkb/rules/evdev
 
 %remove_docs
 
 # Remove unnecessary symlink
 rm -f $RPM_BUILD_ROOT%{_datadir}/X11/xkb/compiled
-%find_lang %{name} 
+%find_lang %{name}
 
 mkdir -p  %{buildroot}/etc/X11/xkb/
-mv %{buildroot}/usr/etc/X11/xkb/rules/base.xml %{buildroot}/etc/X11/xkb/
+mv %{buildroot}/etc/X11/xkb/rules/base.xml %{buildroot}/etc/X11/xkb/
 pushd %{buildroot}
-ln -s etc/X11/xkb/base.xml usr/etc/X11/xkb/rules/base.xml
+ln -s /etc/X11/xkb/base.xml etc/X11/xkb/rules/base.xml
 popd
 
 # Create filelist
@@ -128,17 +106,22 @@ popd
    popd
 }
 
-%files -f files.list -f %{name}.lang
+#remove *.mo
+find %{buildroot}/usr/share/locale -name "*.mo" -exec rm -f {} \;
+
+%files -f files.list
+%manifest xkeyboard-config.manifest
+/usr/share/license/%{name}
 %defattr(-,root,root,-)
 #%doc AUTHORS README NEWS TODO COPYING CREDITS docs/README.* docs/HOWTO.*
 /etc/X11/xkb/base.xml
-/usr/etc/X11/xkb/rules/base.xml
-/usr/etc/X11/xkb/rules/xfree86
-/usr/etc/X11/xkb/rules/xfree86.lst
-/usr/etc/X11/xkb/rules/xfree86.xml
-/usr/etc/X11/xkb/rules/xorg
-/usr/etc/X11/xkb/rules/xorg.lst
-/usr/etc/X11/xkb/rules/xorg.xml
+/etc/X11/xkb/rules/base.xml
+/etc/X11/xkb/rules/xfree86
+/etc/X11/xkb/rules/xfree86.lst
+/etc/X11/xkb/rules/xfree86.xml
+/etc/X11/xkb/rules/xorg
+/etc/X11/xkb/rules/xorg.lst
+/etc/X11/xkb/rules/xorg.xml
 #%{_mandir}/man7/xkeyboard-config.*
 
 %files devel
@@ -146,9 +129,13 @@ popd
 %{_datadir}/pkgconfig/xkeyboard-config.pc
 
 %files -n xkb-data
+%manifest xkb-data.manifest
+/usr/share/license/xkb-data
 #%defattr(-,root,root,-)
-/usr/etc/X11/*
+/etc/X11/*
 
 %files -n xkb-data-i18n
+%manifest xkb-data-i18n.manifest
+/usr/share/license/xkb-data-i18n
 #%defattr(-,root,root,-)
-/usr/share/locale/*
+#/usr/share/locale/*

@@ -8,6 +8,7 @@ amiga \
 ataritt \
 empty \
 evdev \
+tizen_mobile \
 fujitsu \
 hp \
 ibm \
