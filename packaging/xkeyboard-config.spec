@@ -3,8 +3,8 @@
 
 Summary: X Keyboard Extension configuration data
 Name: xkeyboard-config
-Version: 2.9.1
-Release: 5
+Version: 2.11.2
+Release: 1
 License: MIT
 Group: User Interface/X
 URL: http://www.freedesktop.org/wiki/Software/XKeyboardConfig
@@ -63,13 +63,18 @@ Requires: pkgconfig
 %prep
 %setup -q
 
+export TIZEN_PROFILE="%{?tizen_profile_name}"
+./make_keycodes.sh
+./make_symbols.sh
+
 %build
 %autogen
 %configure \
     --enable-compat-rules \
     --with-xkb-base=/etc/X11/xkb --datarootdir=/etc \
     --disable-xkbcomp-symlink \
-    --with-xkb-rules-symlink=xfree86,xorg
+    --with-xkb-rules-symlink=xfree86,xorg \
+	--with-tizen-profile="%{?tizen_profile_name}"
 
 make %{?jobs:-j%jobs} %{?_smp_mflags}
 
@@ -80,10 +85,10 @@ cp -af COPYING %{buildroot}/usr/share/license/%{name}
 cp -af COPYING %{buildroot}/usr/share/license/xkb-data
 cp -af COPYING %{buildroot}/usr/share/license/xkb-data-i18n
 make install DESTDIR=$RPM_BUILD_ROOT INSTALL="install -p"
-cp -af %{buildroot}/etc/X11/xkb/rules/evdev %{buildroot}/etc/X11/xkb/rules/tizen_mobile
+cp -af %{buildroot}/etc/X11/xkb/rules/evdev %{buildroot}/etc/X11/xkb/rules/tizen_"%{?tizen_profile_name}"
 mv -f %{buildroot}/etc/X11/xkb/rules/evdev %{buildroot}/etc/X11/xkb/rules/evdev.org
-sed -i 's/evdev/tizen_mobile/g' %{buildroot}/etc/X11/xkb/rules/tizen_mobile
-ln -sf tizen_mobile %{buildroot}/etc/X11/xkb/rules/evdev
+sed -i 's/evdev/tizen_%{?tizen_profile_name}/g' %{buildroot}/etc/X11/xkb/rules/tizen_"%{?tizen_profile_name}"
+ln -sf tizen_"%{?tizen_profile_name}" %{buildroot}/etc/X11/xkb/rules/evdev
 
 %remove_docs
 
